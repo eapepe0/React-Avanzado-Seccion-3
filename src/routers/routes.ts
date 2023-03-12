@@ -10,21 +10,21 @@ interface Route {
 export const routes: Route[] = [
   //* ponemos la interface Route
   {
-    to: "/lazy-1", //* esto tiene que coincidir con el to del <NavLink/>
-    path: "lazy1", //* es igual al path de <Route>
-    Component: LazyPage1, //* el componente que renderizara
+    to: "/lazy1", //* esto tiene que coincidir con el to del <NavLink/>
+    path: "lazy1", //* es igual al path de <Route>  tanto path como to tienen que coincidir
+    Component: LazyPage1, //* el componente que renderizara , tiene que tener la C mayuscula , el componente siempre se debe crear con mayuscula
     name: "Lazy-1", //* nombre que visualmente querramos ver
   },
   {
-    to: "/lazy-2", //* esto tiene que coincidir con el to del <NavLink/>
-    path: "lazy2", //* es igual al path de <Route>
-    Component: LazyPage2, //* el componente que renderizara
+    to: "/lazy2", //* esto tiene que coincidir con el to del <NavLink/>
+    path: "lazy2", //* es igual al path de <Route>  tanto path como to tienen que coincidir
+    Component: LazyPage2, //* el componente que renderizara , tiene que tener la C mayuscula , el componente siempre se debe crear con mayuscula
     name: "Lazy-2",
   },
   {
-    to: "/lazy-3", //* esto tiene que coincidir con el to del <NavLink/>
-    path: "lazy3", //* es igual al path de <Route>
-    Component: LazyPage3, //* el componente que renderizara
+    to: "/lazy3", //* esto tiene que coincidir con el to del <NavLink/>
+    path: "lazy3", //* es igual al path de <Route>  tanto path como to tienen que coincidir
+    Component: LazyPage3, //* el componente que renderizara , tiene que tener la C mayuscula , el componente siempre se debe crear con mayuscula
     name: "Lazy-3",
   },
 ];
