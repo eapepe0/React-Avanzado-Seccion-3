@@ -12,9 +12,24 @@ interface Route {
 
 //* LAZY LOAD
 
-const Lazy1 = lazy(() => import("../01-lazyload/pages/LazyPage1"));
-const Lazy2 = lazy(() => import("../01-lazyload/pages/LazyPage2"));
-const Lazy3 = lazy(() => import("../01-lazyload/pages/LazyPage3"));
+const Lazy1 = lazy(
+  () =>
+    import(
+      /* webpackChunkName : "LazyPage1" */ "../01-lazyload/pages/LazyPage1"
+    )
+); //* renombramos los chunks
+const Lazy2 = lazy(
+  () =>
+    import(
+      /* webpackChunkName : "LazyPage2" */ "../01-lazyload/pages/LazyPage2"
+    )
+); //* renombramos los chunks
+const Lazy3 = lazy(
+  () =>
+    import(
+      /* webpackChunkName : "LazyPage3" */ "../01-lazyload/pages/LazyPage3"
+    )
+); //* renombramos los chunks
 
 export const routes: Route[] = [
   //* ponemos la interface Route
