@@ -1,4 +1,5 @@
 import { lazy, LazyExoticComponent } from "react";
+import NoLazy from "../01-lazyload/pages/NoLazy";
 
 type JSXComponent = () => JSX.Element;
 
@@ -12,43 +13,28 @@ interface Route {
 
 //* LAZY LOAD
 
-const Lazy1 = lazy(
+//* con el /* webpackChunkName: "LazyLayout" */ ponemos como queremos que se llame el chunk (pedazo) de aplicacion que se cargue
+const LazyLayout = lazy(
   () =>
     import(
-      /* webpackChunkName : "LazyPage1" */ "../01-lazyload/pages/LazyPage1"
+      /* webpackChunkName: "LazyLayout" */ "../01-lazyload/layout/LazyLayout"
     )
-); //* renombramos los chunks
-const Lazy2 = lazy(
-  () =>
-    import(
-      /* webpackChunkName : "LazyPage2" */ "../01-lazyload/pages/LazyPage2"
-    )
-); //* renombramos los chunks
-const Lazy3 = lazy(
-  () =>
-    import(
-      /* webpackChunkName : "LazyPage3" */ "../01-lazyload/pages/LazyPage3"
-    )
-); //* renombramos los chunks
+);
 
 export const routes: Route[] = [
   //* ponemos la interface Route
+  //* la primer ruta , seria la que se ve por defecto
+
   {
-    to: "/lazy1", //* esto tiene que coincidir con el to del <NavLink/>
-    path: "lazy1", //* es igual al path de <Route>  tanto path como to tienen que coincidir
-    Component: Lazy1, //* El lazyLoad que se cargara
-    name: "Lazy-1", //* nombre que visualmente querramos ver
+    to: "/lazyload/",
+    path: "/lazyload/*", //* todo lo que empieze con lazyload
+    Component: LazyLayout, //* El componente perezoso lazyLoad que se cargara
+    name: "Lazy-Layout", //* nombre que visualmente querramos ver
   },
   {
-    to: "/lazy2", //* esto tiene que coincidir con el to del <NavLink/>
-    path: "lazy2", //* es igual al path de <Route>  tanto path como to tienen que coincidir
-    Component: Lazy2, //* El lazyLoad que se cargara
-    name: "Lazy-2",
-  },
-  {
-    to: "/lazy3", //* esto tiene que coincidir con el to del <NavLink/>
-    path: "lazy3", //* es igual al path de <Route>  tanto path como to tienen que coincidir
-    Component: Lazy3, //* El lazyLoad que se cargara
-    name: "Lazy-3",
+    to: "/no-lazy", //* esto tiene que coincidir con el to del <NavLink/>
+    path: "no-lazy", //* es igual al path de <Route>  tanto path como to tienen que coincidir
+    Component: NoLazy, //* El lazyLoad que se cargara
+    name: "No-Lazy",
   },
 ];
