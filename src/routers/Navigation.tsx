@@ -1,41 +1,48 @@
-import { Suspense } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route, NavLink, Navigate } from "react-router-dom";
 import logo from "../logo.svg";
-import { routes } from "./routes";
 
 export const Navigation = () => {
   return (
-    <Suspense fallback={<span>Cargando ...</span>}>
-      <BrowserRouter>
-        <div className="main-layout">
-          <nav>
-            <img src={logo} alt="React Logo" />
+    <BrowserRouter>
+      <div className="main-layout">
+        <nav>
+          <img src={logo} alt="React Logo" />
 
-            <ul>
-              {/* mapeamos routes , extraemos to y name , usamos de key el to , y el name es lo que mostrariamos en el menu lateral */}
-              {routes.map(({ to, name }) => (
-                <li key={to}>
-                  <NavLink
-                    to={to}
-                    className={({ isActive }) => (isActive ? "nav-active" : "")}
-                  >
-                    {name}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <Routes>
-            {/* mapeamos el route extraemos el path y el componente , mostramos cada route donde el element es el Componente pasado */}
-            {routes.map(({ path, Component }) => (
-              <Route key={path} path={path} element={<Component />} />
-            ))}
-            {/* como ruta con comodin , navegamos al to de la primera ruta  */}
-            <Route path="/*" element={<Navigate to={routes[0].to} replace />} />
-          </Routes>
-        </div>
-      </BrowserRouter>
-    </Suspense>
+          <ul>
+            <li>
+              <NavLink
+                to="/home"
+                className={({ isActive }) => (isActive ? "nav-active" : "")}
+              >
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/about"
+                className={({ isActive }) => (isActive ? "nav-active" : "")}
+              >
+                About
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/users"
+                className={({ isActive }) => (isActive ? "nav-active" : "")}
+              >
+                Users
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+        <Routes>
+          <Route path="about" element={<h1>About Page</h1>} />
+          <Route path="users" element={<h1>Users Page</h1>} />
+          <Route path="home" element={<h1>Home Page</h1>} />
+          <Route path="/*" element={<Navigate to="/home" replace />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 };
