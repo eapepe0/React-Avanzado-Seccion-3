@@ -1,14 +1,10 @@
 import styles from "../styles/styles.module.css";
 import noImage from "../assets/no-image.jpg";
 import { useState } from "react";
+import { useProduct } from "../hooks/useProduct";
 
 export const ProductCard = () => {
-  const [counter, setCounter] = useState(0);
-
-  //* funcion incrementa o decrementa depende del valor dado (+1/-1) el contador , pero no llega a irse al numeros negativos
-  const increaseBy = (value: number) => {
-    setCounter((prev) => Math.max(prev + value, 0));
-  };
+  const { counter, increaseBy } = useProduct();
   return (
     <div className={styles.productCard}>
       {/* <img className={styles.productImg} src={noImage} alt="Coffee Mug" /> */}
