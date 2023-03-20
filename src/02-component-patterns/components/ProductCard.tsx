@@ -15,20 +15,33 @@ interface Product {
   img?: string; //*la imagen puede o no existir (?) , sera una string
 }
 
-export const ProductCard = ({ product }: Props) => {
-    
-  const { counter, increaseBy } = useProduct();
+//* dividimos la imagen en otro pequeño componente para poderle dar mas control al usuario
+export const ProductImage = ({img=''})=>{
+    return(
+        //* le decimos al src que si existe el img , lo usamos de lo contrario usamos el noImage
+        <img className={styles.productImg} src={img ? img : noImage} alt="Product" />
+    )
+}
 
-  return (
-    <div className={styles.productCard}>
-      <img
-        className={styles.productImg}
-        src={product.img ? product.img : noImage} //* le decimos al src que si existe el img , lo usamos de lo contrario usamos el noImage
-        alt="Coffee Mug"
-      />
-      <span className={styles.productDescription}>{product.title}</span>{" "}
-      {/*  mostramos el titulo*/}
-      <div className={styles.buttonsContainer}>
+//* cuando es una sola una propiedad no conviene crear una interface sino agregarlo asi {title : string}
+export const ProductTitle= ({title} : {title : string}) =>{
+    return(
+        <span className={styles.productDescription}>{title}</span>
+    )
+}
+
+//* creamos un interface donde counter es un numero , 
+//* increaseBy es una funcion que tiene un valor de un numero , y no tiene return
+interface ProductButtonProps{
+    counter :number;
+    increaseBy : (value:number)=> void ;
+}
+
+//* en los botones , desestructuramos counter e increaseBy y usamos la interface
+
+export const ProductButtons = ({ counter , increaseBy }:ProductButtonProps) =>{
+    return (
+    <div className={styles.buttonsContainer}>
         <button className={styles.buttonMinus} onClick={() => increaseBy(-1)}>
           -
         </button>
@@ -36,7 +49,20 @@ export const ProductCard = ({ product }: Props) => {
         <button className={styles.buttonAdd} onClick={() => increaseBy(+1)}>
           +
         </button>
-      </div>
+    </div>
+    );
+}
+
+export const ProductCard = ({ product }: Props) => {
+
+  const { counter, increaseBy } = useProduct();
+
+  return (
+    <div className={styles.productCard}>
+      <ProductImage img={product.img}/>
+      <ProductTitle title = {product.title}/>
+      <ProductButtons counter={counter} increaseBy={increaseBy}/>
+      
     </div>
   );
 };
