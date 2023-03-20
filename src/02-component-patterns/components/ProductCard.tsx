@@ -1,3 +1,4 @@
+import {ReactElement} from 'react'
 import { useProduct } from "../hooks/useProduct";
 
 import styles from "../styles/styles.module.css";
@@ -6,6 +7,8 @@ import noImage from "../assets/no-image.jpg";
 //* definimos como se verian las props , en este caso recibimos un product, el cual se ve como la interface Product
 interface Props {
   product: Product;
+  children?: ReactElement | ReactElement[];
+  //* recibimos un children , el cual es un Elemento React que puede ser uno solo o varios (un arreglo)
 }
 
 //* definimos como se veria el producto
@@ -52,17 +55,14 @@ export const ProductButtons = ({ counter , increaseBy }:ProductButtonProps) =>{
     </div>
     );
 }
-
-export const ProductCard = ({ product }: Props) => {
+//* vamos a recibir el children y el product
+export const ProductCard = ({ children,product }: Props) => {
 
   const { counter, increaseBy } = useProduct();
 
   return (
     <div className={styles.productCard}>
-      <ProductImage img={product.img}/>
-      <ProductTitle title = {product.title}/>
-      <ProductButtons counter={counter} increaseBy={increaseBy}/>
-      
+     {children}
     </div>
   );
 };

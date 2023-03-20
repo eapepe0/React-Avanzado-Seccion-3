@@ -1,4 +1,4 @@
-import { ProductCard } from "../components/ProductCard";
+import { ProductButtons, ProductCard, ProductImage, ProductTitle } from "../components/ProductCard";
 
 //* creamos el objeto product
 
@@ -27,14 +27,19 @@ export const ShoppingPage = () => {
         }}
       >
         {/* typescript nos dice que tenemos que mandarle algo llamado product */}
-        <ProductCard product={product} />
-        <ProductCard product={product} />
-        <ProductCard product={productNoImage} />
-        <ProductCard product={product} />
-        <ProductCard product={productNoImage} />
-        <ProductCard product={product} />
-        <ProductCard product={product} />
-        <ProductCard product={productNoImage} />
+        <ProductCard product={product} >
+        {/* Si al padre le mando un producto , eso se tendria que heredar a los hijos y que no hiciera falta de usar product.img o product.title */}
+            <ProductImage img={product.img}/>
+            <ProductTitle title={"pepito"}/>
+
+            {/* si comentamos el componente button podemos ver que el programa funciona */}
+            {/* pero por que no funciona */}
+            {/* En el componente Button , tenemos referencias a una funcion y a un estado el cual ni siquiera esta en el mismo componente sino en ProductCard */}
+
+            {/* <ProductButtons />    */}
+
+        </ProductCard>
+        
       </div>
     </div>
   );
