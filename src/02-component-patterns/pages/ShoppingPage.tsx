@@ -35,6 +35,7 @@ export const ShoppingPage = () => {
             {/* si comentamos el componente button podemos ver que el programa funciona */}
             {/* pero por que no funciona */}
             {/* En el componente Button , tenemos referencias a una funcion y a un estado el cual ni siquiera esta en el mismo componente sino en ProductCard */}
+            {/* Esto lo arreglamos con el Context */}
 
              <ProductCard.Buttons/>
 
@@ -44,7 +45,7 @@ export const ShoppingPage = () => {
 
         <ProductCard product={productNoImage} >
             <ProductImage/>
-            <ProductTitle title={"Producto sin imagen"}/>
+            <ProductTitle />
             <ProductButtons />
         </ProductCard>
         
