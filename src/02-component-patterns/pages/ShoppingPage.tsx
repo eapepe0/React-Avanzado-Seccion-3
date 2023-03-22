@@ -29,15 +29,29 @@ export const ShoppingPage = () => {
         {/* typescript nos dice que tenemos que mandarle algo llamado product */}
         <ProductCard product={product} >
         {/* Si al padre le mando un producto , eso se tendria que heredar a los hijos y que no hiciera falta de usar product.img o product.title */}
-            <ProductImage img={product.img}/>
-            <ProductTitle title={"pepito"}/>
+            <ProductCard.Image img={product.img}/>
+            <ProductCard.Title title={"pepito"}/>
 
             {/* si comentamos el componente button podemos ver que el programa funciona */}
             {/* pero por que no funciona */}
             {/* En el componente Button , tenemos referencias a una funcion y a un estado el cual ni siquiera esta en el mismo componente sino en ProductCard */}
 
-            {/* <ProductButtons />    */}
+             <ProductCard.Buttons increaseBy={function (value:number) : void{
+                throw new Error ("");
+             }}
+             counter={0}/>
 
+        </ProductCard>
+
+
+
+        <ProductCard product={product} >
+            <ProductImage/>
+            <ProductTitle title={"Producto sin imagen"}/>
+            <ProductButtons increaseBy={function (value:number) : void{
+                throw new Error ("");
+             }}
+             counter={0}/>
         </ProductCard>
         
       </div>
