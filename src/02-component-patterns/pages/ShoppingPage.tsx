@@ -36,22 +36,16 @@ export const ShoppingPage = () => {
             {/* pero por que no funciona */}
             {/* En el componente Button , tenemos referencias a una funcion y a un estado el cual ni siquiera esta en el mismo componente sino en ProductCard */}
 
-             <ProductCard.Buttons increaseBy={function (value:number) : void{
-                throw new Error ("");
-             }}
-             counter={0}/>
+             <ProductCard.Buttons/>
 
         </ProductCard>
 
 
 
-        <ProductCard product={product} >
+        <ProductCard product={productNoImage} >
             <ProductImage/>
             <ProductTitle title={"Producto sin imagen"}/>
-            <ProductButtons increaseBy={function (value:number) : void{
-                throw new Error ("");
-             }}
-             counter={0}/>
+            <ProductButtons />
         </ProductCard>
         
       </div>
