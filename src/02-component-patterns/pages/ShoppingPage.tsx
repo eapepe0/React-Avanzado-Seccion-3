@@ -23,12 +23,12 @@ export const ShoppingPage = () => {
             justifyContent: "center",
         }}>
         
-{/*         <ProductCard product={product} >
+        <ProductCard product={product} >
             <ProductCard.Image />
             <ProductCard.Title title={"pepito"}/>
              <ProductCard.Buttons/>
         </ProductCard>
- */}
+
 
 
         <ProductCard product={productNoImage} >

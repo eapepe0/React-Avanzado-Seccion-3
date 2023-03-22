@@ -25,10 +25,10 @@ export const ProductCard = ({ children,product }: ProductCardProps) => {
 };
 
 
-/* ProductCard.Title   = ProductTitle;   //* importamos ProductTitle de su componente
+ProductCard.Title   = ProductTitle;   //* importamos ProductTitle de su componente
 ProductCard.Image   = ProductImage;   //* importamos ProductImage de su componente
 ProductCard.Buttons = ProductButtons; //* importamos ProductButtons de su componente
- */
+
 
 /******************
  * //* linea 11 :  creamos un contexto para compartir entre padre e hijo
