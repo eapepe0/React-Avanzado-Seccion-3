@@ -1,6 +1,4 @@
-import { ProductButtons, ProductCard, ProductImage, ProductTitle } from "../components/ProductCard";
-
-//* creamos el objeto product
+import { ProductCard, ProductButtons, ProductImage, ProductTitle } from "../components";
 
 const product = {
   id: "1",
@@ -8,7 +6,7 @@ const product = {
   img: "./coffee-mug.png",
 };
 
-const productNoImage = {
+const productNoImage = { 
   id: "1",
   title: "Coffee Mug - Card",
 };
@@ -18,29 +16,19 @@ export const ShoppingPage = () => {
     <div>
       <h1>Shopping Store</h1>
       <hr />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
-          justifyContent: "center",
-        }}
-      >
-        {/* typescript nos dice que tenemos que mandarle algo llamado product */}
-        <ProductCard product={product} >
-        {/* Si al padre le mando un producto , eso se tendria que heredar a los hijos y que no hiciera falta de usar product.img o product.title */}
-            <ProductCard.Image img={product.img}/>
+      <div style={{
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            justifyContent: "center",
+        }}>
+        
+{/*         <ProductCard product={product} >
+            <ProductCard.Image />
             <ProductCard.Title title={"pepito"}/>
-
-            {/* si comentamos el componente button podemos ver que el programa funciona */}
-            {/* pero por que no funciona */}
-            {/* En el componente Button , tenemos referencias a una funcion y a un estado el cual ni siquiera esta en el mismo componente sino en ProductCard */}
-            {/* Esto lo arreglamos con el Context */}
-
              <ProductCard.Buttons/>
-
         </ProductCard>
-
+ */}
 
 
         <ProductCard product={productNoImage} >
@@ -53,3 +41,14 @@ export const ShoppingPage = () => {
     </div>
   );
 };
+
+
+/**
+ * //* linea 3 :creamos el objeto product
+ * //* linea 9 creamos un producto el cual no tenga una imagen , solamente para probar
+ * 
+ * //* linea 19 : agregamos unos estilos en linea , style={{}}
+ * 
+ * //* linea 26 : TypeScript nos dice que tenemos que mandarle algo llamado product 
+ * 
+ */
