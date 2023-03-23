@@ -19,3 +19,14 @@
     border-radius: 20px;
     width: calc(100% - 20px);
 }
+
+.custom-button {
+    display: flex;
+    justify-content: center;
+}
+
+.custom-button button, .custom-button div{
+    color: white;
+    border-color: white;
+}
+

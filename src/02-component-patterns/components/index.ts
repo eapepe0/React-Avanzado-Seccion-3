@@ -21,10 +21,10 @@ export default ProductCard;
 /**
  * //* linea 1 : importamos el componente ProductCard y lo renombramos como ProductCardHOC (high order component)
  * 
- * //* linea 13 : ProductCard ahora es un objeto , lo cual tiene que tener un titulo , una imagen y unos botones
+ * //* linea 14 : ProductCard ahora es un objeto , lo cual tiene que tener un titulo , una imagen y unos botones
  * //*           en JavaScript todo es un objeto excepto los primitivos , por eso le agregaremos al objeto ProductCard nuevas propiedades
  * //*           usaremos la interface creada en el archivo interfaces.ts
  * 
- * //* linea 14 : Lo ponemos en mayuscula por que es un componente
+ * //* linea 15 - 16 - 17 : Lo ponemos en mayuscula por que es un componente
  * 
  */
