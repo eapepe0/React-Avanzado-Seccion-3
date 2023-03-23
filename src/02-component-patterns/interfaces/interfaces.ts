@@ -4,7 +4,8 @@ import { ReactElement} from 'react'
 
 export interface ProductCardProps {
     product: Product;
-    children?: ReactElement | ReactElement[];
+    children? : ReactElement | ReactElement[];
+    className? : string;
   }
 
 export interface Product {
@@ -30,6 +31,7 @@ export interface ProductCardHOCProps{
  * //* linea 4 : definimos como se verian las props , en este caso recibimos un product, el cual se ve como la interface Product
  * //* linea 6 : recibimos un children , el cual es un Elemento React que puede ser uno solo o varios (un arreglo)
  * 
+ * //* linea 8 : definimos que reciba un className el cual sera opcional y sera una string
  * //* linea 9 : definimos como se veria el producto (Product)
  * //* linea 10 :  el id sera una string
  * //* linea 11 :  el titulo sera una string
