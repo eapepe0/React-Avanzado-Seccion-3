@@ -33,9 +33,9 @@ export const ShoppingPage = () => {
 
 
 
-        <ProductCard product={productNoImage} className='bg-dark'>
-            <ProductImage/>
-            <ProductTitle />
+        <ProductCard product={product} className='bg-dark'>
+            <ProductImage className="custom-image"/>
+            <ProductTitle className="text-white text-center text-bold" />
             <ProductButtons />
         </ProductCard>
         

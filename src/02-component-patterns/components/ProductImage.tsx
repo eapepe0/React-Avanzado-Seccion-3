@@ -3,8 +3,11 @@ import noImage from "../assets/no-image.jpg";
 import { useContext } from "react";
 import { ProductContext } from "./ProductCard";
 
-
-export const ProductImage = ({img=''})=>{
+interface PropsImage{
+    img? : string;
+    className? : string;
+}
+export const ProductImage = ({ img , className } : PropsImage)=>{
 
     const { product } = useContext(ProductContext)
 
@@ -19,15 +22,18 @@ export const ProductImage = ({img=''})=>{
     }
 
     return(
-        <img className={styles.productImg} src={imgToShow} alt="Product" />
+        <img className={`${styles.productImg} ${className}`} src={imgToShow} alt="Product" />
     )
 }
 
 
 /**
- * //* linea 0 : dividimos la imagen en otro pequeño componente para poderle dar mas control al usuario
+ * //* linea 0  : dividimos la imagen en otro pequeño componente para poderle dar mas control al usuario
  * 
- * //* linea 9 : extraemos el product del context
+ * //* linea 6 : creamos una interface donde recibimos una imagen que puede existir o no que es un string y un className que puede existir o no que es una string
+ * 
+ * //* linea 9  : extraemos el product del context
+ * //* linea 10 : le pasamos un img ,y un className con la interface PropsImage
  * //* linea 11 : definimos que la variable es un string
  * 
  * //* linea 13 : si existe una imagen como prop
