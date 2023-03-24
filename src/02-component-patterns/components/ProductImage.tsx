@@ -3,7 +3,7 @@ import noImage from "../assets/no-image.jpg";
 import { useContext } from "react";
 import { ProductContext } from "./ProductCard";
 
-interface PropsImage{
+export interface PropsImage{
     img? : string;
     className? : string;
 }

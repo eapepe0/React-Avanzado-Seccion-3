@@ -25,10 +25,10 @@ export const ShoppingPage = () => {
             justifyContent: "center",
         }}>
         
-        <ProductCard product={product} >
-            <ProductCard.Image />
-            <ProductCard.Title title={"pepito"}/>
-             <ProductCard.Buttons/>
+        <ProductCard product={product} className="bg-dark" >
+            <ProductCard.Image className="custom-image"/>
+            <ProductCard.Title title={"Coffee Mug Card"} className='text-bold text-white text-center'/>
+             <ProductCard.Buttons className="custom-button"/>
         </ProductCard>
 
 
