@@ -39,6 +39,13 @@ export const ShoppingPage = () => {
             <ProductButtons className="custom-button"/>
         </ProductCard>
         
+
+        <ProductCard product={product} style={{backgroundColor : "gray"}}>
+            <ProductImage style={{filter : "blur(1.6px)" }}/>
+            <ProductTitle style={{textShadow : "5px 10px "}}/>
+            <ProductButtons style={{display: "flex" , justifyContent: "flex-end" }}/>
+        </ProductCard>
+        
       </div>
     </div>
   );
