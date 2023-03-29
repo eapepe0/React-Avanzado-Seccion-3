@@ -1,4 +1,5 @@
 import { ProductCard, ProductButtons, ProductImage, ProductTitle } from "../components";
+import { Product } from "../interfaces/interfaces";
 
 import '../styles/custom-styles.css'
 
@@ -14,6 +15,9 @@ const product2 = {
   img : "./coffee-mug2.png"
 };
 
+
+const products : Product[] =[ product, product2 ];
+
 export const ShoppingPage = () => {
   return (
     <div>
@@ -26,19 +30,24 @@ export const ShoppingPage = () => {
             justifyContent: "center",
         }}>
         
-        <ProductCard product={product} className="bg-dark" >
-            <ProductCard.Image className="custom-image"/>
-            <ProductCard.Title title={"Coffee Mug Card"} className='text-bold text-white text-center'/>
-             <ProductCard.Buttons className="custom-button"/>
-        </ProductCard>
 
+        {
+        products.map (producto => (
+          <ProductCard key= { producto.id }product={producto} className='bg-dark'>
+              <ProductImage className="custom-image"/>
+              <ProductTitle className="text-white text-center text-bold" />
+              <ProductButtons className="custom-button"/>
+          </ProductCard>
+        ))
+        }
+      </div>
 
-
-        <ProductCard product={product2} className='bg-dark'>
-            <ProductImage className="custom-image"/>
-            <ProductTitle className="text-white text-center text-bold" />
-            <ProductButtons className="custom-button"/>
-        </ProductCard>
+      <div className="shopping-cart">
+      <ProductCard product={product2} className='bg-dark' style={{width : "100px"}}>
+        <ProductImage className="custom-image"/>
+        <ProductTitle className="text-white text-center text-bold" style={{fontSize : "0.58rem"}} />
+        <ProductButtons className="custom-button"/>
+      </ProductCard>
       </div>
     </div>
   );
@@ -48,9 +57,10 @@ export const ShoppingPage = () => {
 /**
  * //* linea 3  :creamos el objeto product
  * //* linea 11 : creamos otro objeto product
- *  
- * //* linea 22 : agregamos unos estilos en linea , style={{}}
+ * //* linea 19 : creamos un arreglo de productos
  * 
+ * //* linea 35 - 42 : mostramos los productos mapeando el array de productos
  * 
- * 
+ * //* linea 45 - creamos otro productCard pero esta vez es la misma que las del map , pero en miniatura , tenemos que lograr que si aumentamos
+ * //*            un item en el ProductCard, se agregue a la miniatura y si lo agregamos en la miniatura se agregue en el ProductCard
  */
