@@ -2,7 +2,7 @@ import {createContext, ReactElement} from 'react'
 import { useProduct } from "../hooks/useProduct";
 import styles from "../styles/styles.module.css";
 
-import { Product, ProductContextProps } from '../interfaces/interfaces';
+import { onChangeArgs, Product, ProductContextProps } from '../interfaces/interfaces';
 import { ProductTitle } from './ProductTitle';
 import { ProductImage } from './ProductImage';
 import { ProductButtons } from './ProductButtons';
@@ -12,7 +12,7 @@ export interface Props {
   children? : ReactElement | ReactElement[];
   className? : string;
   style? : React.CSSProperties;
-  onChange?: ()=> void;
+  onChange?: ( args : onChangeArgs )=> void;
 }
 
 export const ProductContext = createContext ({} as ProductContextProps); 
@@ -20,7 +20,7 @@ const { Provider } = ProductContext;
 
 export const ProductCard = ({ children,product, className,style , onChange}: Props) => {
 
-  const { counter, increaseBy } = useProduct(onChange); 
+  const { counter, increaseBy } = useProduct({onChange , product}); 
 
   return (
     <Provider value={{counter , increaseBy, product }}>
@@ -43,7 +43,8 @@ ProductCard.Buttons = ProductButtons; //* importamos ProductButtons de su compon
 * //* linea 12 : recibimos un children , el cual es un Elemento React que puede ser uno solo o varios (un arreglo)
 * //* linea 13 : definimos que reciba un className el cual sera opcional y sera una string
 * //* liena 14 : definimos un estilo , que puede existir o no , la cual es una React.CSSProperties
-* //* linea 15 : definimos una funcion onChange , que puede existir o no , la cual es una funcion que no devuelve nada
+* //* linea 15 : definimos una funcion onChange , que puede existir o no , la cual es una funcion que no devuelve nada 
+* //*            recibe unos argumentos , onChangeArgs definidos en el interfaces.ts
 * 
 * //* linea 18 :  creamos un contexto para compartir entre padre e hijo
 * //*              con el (as) decimos como se vera el context mediante la interface

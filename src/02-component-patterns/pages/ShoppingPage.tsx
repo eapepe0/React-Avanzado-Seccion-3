@@ -29,8 +29,8 @@ export const ShoppingPage = () => {
     '2':{...product2 , count : 2},
   }); 
 
-  const onProductCountChange = ()=>{
-    console.log("func")
+  const onProductCountChange = ({count , product } : {count : number , product : Product})=>{
+    console.log('OnProductChange',{count , product})
   }
 
   return (
@@ -47,7 +47,7 @@ export const ShoppingPage = () => {
 
         {
         products.map (producto => (
-          <ProductCard key= { producto.id }product={producto} className='bg-dark' onChange={ () => onProductCountChange()}>
+          <ProductCard key= { producto.id }product={producto} className='bg-dark' onChange={(evento)=>onProductCountChange(evento)}>
               <ProductImage className="custom-image"/>
               <ProductTitle className="text-white text-center text-bold" />
               <ProductButtons className="custom-button"/>
@@ -57,7 +57,7 @@ export const ShoppingPage = () => {
       </div>
 
       <div className="shopping-cart">
-      <ProductCard product={product2} className='bg-dark' style={{width : "100px"}} onChange={ () => onProductCountChange() }>
+      <ProductCard product={product2} className='bg-dark' style={{width : "100px"}} /* onChange={ () => onProductCountChange() } */>
         <ProductImage className="custom-image"/>
         <ProductTitle className="text-white text-center text-bold" style={{fontSize : "0.58rem"}} />
         <ProductButtons className="custom-button"/>
