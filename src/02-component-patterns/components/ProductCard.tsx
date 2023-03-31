@@ -13,14 +13,15 @@ export interface Props {
   className? : string;
   style? : React.CSSProperties;
   onChange?: ( args : onChangeArgs )=> void;
+  value? : number;
 }
 
 export const ProductContext = createContext ({} as ProductContextProps); 
 const { Provider } = ProductContext;
 
-export const ProductCard = ({ children,product, className,style , onChange}: Props) => {
+export const ProductCard = ({ children,product, className,style , onChange , value}: Props) => {
 
-  const { counter, increaseBy } = useProduct({onChange , product}); 
+  const { counter, increaseBy } = useProduct({onChange , product , value}); 
 
   return (
     <Provider value={{counter , increaseBy, product }}>
