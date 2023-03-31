@@ -32,8 +32,8 @@ export const ShoppingPage = () => {
   const onProductCountChange = ({count , product } : {count : number , product : Product})=>{
     setShoppingCart( oldShoppingCart =>{
       if (count === 0) {
-        
-        const {[product.id] : toDelete, ...rest} = oldShoppingCart  //* desestructuramos el key del product.id [] del shoppingCart , lo extraido se lo asignamos a toDelete , cualquier otra propiedad que no se haya extraido se agrupa en un objeto llamando rest
+        //* desestructuramos el key del product.id [] del shoppingCart , lo extraido se lo asignamos a toDelete , cualquier otra propiedad que no se haya extraido se agrupa en un objeto llamando rest
+        const {[product.id] : toDelete, ...rest} = oldShoppingCart  
         return{
           ...rest
         }
@@ -68,11 +68,16 @@ export const ShoppingPage = () => {
       </div>
 
       <div className="shopping-cart">
-      <ProductCard product={product2} className='bg-dark' style={{width : "100px"}} /* onChange={ () => onProductCountChange() } */>
-        <ProductImage className="custom-image"/>
-        <ProductTitle className="text-white text-center text-bold" style={{fontSize : "0.58rem"}} />
-        <ProductButtons className="custom-button"/>
+        {
+          Object.entries(shoppingCart).map(([ key , product ])=>(
+        <ProductCard key={key} product={product} className='bg-dark' style={{width : "100px"}} /* onChange={ () => onProductCountChange() } */>
+          <ProductImage className="custom-image"/>
+          <ProductTitle className="text-white text-center text-bold" style={{fontSize : "0.58rem"}} />
+          <ProductButtons className="custom-button"/>
       </ProductCard>
+          ))
+        }
+      
       </div>
       {JSON.stringify(shoppingCart, null, 5)}
     </div>
