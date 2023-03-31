@@ -25,12 +25,23 @@ interface ProductInCart extends Product{
 export const ShoppingPage = () => {
 
   const [shoppingCart, setShoppingCart] = useState<{[ key : string ] : ProductInCart}>({
-    '1':{...product , count : 10},
-    '2':{...product2 , count : 2},
+  /*   '1':{...product , count : 10},
+    '2':{...product2 , count : 2}, */
   }); 
 
   const onProductCountChange = ({count , product } : {count : number , product : Product})=>{
-    console.log('OnProductChange',{count , product})
+    setShoppingCart( oldShoppingCart =>{
+      if (count === 0) {
+        
+        const {[product.id] : toDelete, ...rest} = oldShoppingCart  //* desestructuramos el key del product.id [] del shoppingCart , lo extraido se lo asignamos a toDelete , cualquier otra propiedad que no se haya extraido se agrupa en un objeto llamando rest
+        return{
+          ...rest
+        }
+      }
+      return{
+        ...oldShoppingCart , [product.id] : {...product , count}
+      }
+    })
   }
 
   return (
@@ -63,6 +74,7 @@ export const ShoppingPage = () => {
         <ProductButtons className="custom-button"/>
       </ProductCard>
       </div>
+      {JSON.stringify(shoppingCart, null, 5)}
     </div>
   );
 };
