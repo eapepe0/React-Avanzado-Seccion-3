@@ -58,7 +58,7 @@ export const ShoppingPage = () => {
 
         {
         products.map (producto => (
-          <ProductCard key= { producto.id }product={producto} className='bg-dark' onChange={(evento)=>onProductCountChange(evento)}>
+          <ProductCard key= { producto.id } product={producto} className='bg-dark' onChange={(evento)=>onProductCountChange(evento)} value={shoppingCart[producto.id]?.count || 0}>
               <ProductImage className="custom-image"/>
               <ProductTitle className="text-white text-center text-bold" />
               <ProductButtons className="custom-button"/>
@@ -71,8 +71,8 @@ export const ShoppingPage = () => {
         {
           Object.entries(shoppingCart).map(([ key , product ])=>(
 
-          <ProductCard key={key} product={product} className='bg-dark' style={{width : "100px"}} value={product.count}>
-            <ProductImage className="custom-image"/>
+          <ProductCard key={key} product={product} className='bg-dark' style={{width : "100px"}} value={product.count} onChange={onProductCountChange}>
+            <ProductImage className="custom-image"/>    
             <ProductTitle className="text-white text-center text-bold" style={{fontSize : "0.58rem"}} />
             <ProductButtons className="custom-button"/>
         </ProductCard>
