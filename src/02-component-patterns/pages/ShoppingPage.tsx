@@ -31,7 +31,9 @@ export const ShoppingPage = () => {
 
   const onProductCountChange = ({count , product } : {count : number , product : Product})=>{
     setShoppingCart( oldShoppingCart =>{
-      if (count === 0) {
+      console.log({count})
+ 
+     if (count === 0) {
         //* desestructuramos el key del product.id [] del shoppingCart , lo extraido se lo asignamos a toDelete , cualquier otra propiedad que no se haya extraido se agrupa en un objeto llamando rest
         const {[product.id] : toDelete, ...rest} = oldShoppingCart  
         return{
@@ -58,7 +60,7 @@ export const ShoppingPage = () => {
 
         {
         products.map (producto => (
-          <ProductCard key= { producto.id } product={producto} className='bg-dark' onChange={(evento)=>onProductCountChange(evento)} value={shoppingCart[producto.id]?.count || 0}>
+          <ProductCard key= { producto.id } product={producto} className='bg-dark' onChange={onProductCountChange} value={shoppingCart[producto.id]?.count || 0}>
               <ProductImage className="custom-image"/>
               <ProductTitle className="text-white text-center text-bold" />
               <ProductButtons className="custom-button"/>
