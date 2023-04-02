@@ -16,7 +16,6 @@ export const useProduct =  ( {onChange , product , value = 0}:useProductArgs) =>
 
     //* esta controlado?
     if (isControlled.current){
-      console.log(isControlled)
       return onChange!({count : value , product})
     }
 

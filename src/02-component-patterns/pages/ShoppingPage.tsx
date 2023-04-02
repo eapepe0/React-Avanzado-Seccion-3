@@ -31,20 +31,22 @@ export const ShoppingPage = () => {
 
   const onProductCountChange = ({count , product } : {count : number , product : Product})=>{
     setShoppingCart( oldShoppingCart =>{
-      console.log({count})
- 
-     if (count === 0) {
-        //* desestructuramos el key del product.id [] del shoppingCart , lo extraido se lo asignamos a toDelete , cualquier otra propiedad que no se haya extraido se agrupa en un objeto llamando rest
-        const {[product.id] : toDelete, ...rest} = oldShoppingCart  
+      
+    const productInCart : ProductInCart  = oldShoppingCart[product.id] || {...product, count : 0};
+
+    if (Math.max(productInCart.count + count , 0) > 0){
+      productInCart.count += count ;
+      return{
+        ...oldShoppingCart,[product.id] : productInCart		
+      }
+    }
+
+    const {[product.id] : toDelete, ...rest} = oldShoppingCart  
         return{
           ...rest
         }
-      }
-      return{
-        ...oldShoppingCart , [product.id] : {...product , count}
-      }
-    })
-  }
+  })
+}
 
   return (
     <div>
