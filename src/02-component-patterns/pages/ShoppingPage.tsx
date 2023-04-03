@@ -1,53 +1,14 @@
-import { useState } from "react";
 import { ProductCard, ProductButtons, ProductImage, ProductTitle } from "../components";
-import { Product } from "../interfaces/interfaces";
+import { products } from "../data/products";
+import { useShoppingCart } from "../hooks/useShoppingCart";
+
 
 import '../styles/custom-styles.css'
 
-const product = {
-  id: "1",
-  title: "Coffee Mug - Card",
-  img: "./coffee-mug.png",
-};
-
-const product2 = { 
-  id: "2",
-  title: "Coffee Mug - Meme",
-  img : "./coffee-mug2.png"
-};
-
-
-const products : Product[] =[ product, product2 ];
-interface ProductInCart extends Product{
-  count : number;
-} 
-
 export const ShoppingPage = () => {
 
-  const [shoppingCart, setShoppingCart] = useState<{[ key : string ] : ProductInCart}>({
-  /*   '1':{...product , count : 10},
-    '2':{...product2 , count : 2}, */
-  }); 
-
-  const onProductCountChange = ({count , product } : {count : number , product : Product})=>{
-    setShoppingCart( oldShoppingCart =>{
-      
-    const productInCart : ProductInCart  = oldShoppingCart[product.id] || {...product, count : 0};
-
-    if (Math.max(productInCart.count + count , 0) > 0){
-      productInCart.count += count ;
-      return{
-        ...oldShoppingCart,[product.id] : productInCart		
-      }
-    }
-
-    const {[product.id] : toDelete, ...rest} = oldShoppingCart  
-        return{
-          ...rest
-        }
-  })
-}
-
+  const { shoppingCart , onProductCountChange } = useShoppingCart();
+  
   return (
     <div>
       <h1>Shopping Store</h1>
@@ -75,7 +36,7 @@ export const ShoppingPage = () => {
         {
           Object.entries(shoppingCart).map(([ key , product ])=>(
 
-          <ProductCard key={key} product={product} className='bg-dark' style={{width : "100px"}} value={product.count} onChange={onProductCountChange}>
+        <ProductCard key={key} product={product} className='bg-dark' style={{width : "100px"}} value={product.count} onChange={onProductCountChange}>
             <ProductImage className="custom-image"/>    
             <ProductTitle className="text-white text-center text-bold" style={{fontSize : "0.58rem"}} />
             <ProductButtons className="custom-button"/>
