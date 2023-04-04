@@ -29,7 +29,12 @@ export interface onChangeArgs{
 
 export interface ProductInCart extends Product{
     count : number;
-} 
+}
+
+export interface InitialValues {
+  count? : number;
+  maxCount? : number;
+}
 /**
  * 
  * //* linea 5 : definimos como se veria el producto (Product)
