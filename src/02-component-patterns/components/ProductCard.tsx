@@ -9,7 +9,8 @@ import { ProductButtons } from './ProductButtons';
 
 export interface Props {
   product: Product;
-  children? : ReactElement | ReactElement[];
+  //children? : ReactElement | ReactElement[];
+  children : (mensaje : string)=>JSX.Element;
   className? : string;
   style? : React.CSSProperties;
   onChange?: ( args : onChangeArgs )=> void;
@@ -27,7 +28,7 @@ export const ProductCard = ({ children,product, className,style , onChange , val
   return (
     <Provider value={{counter , increaseBy, product }}>
       <div className={`${styles.productCard} ${className}`} style={style}>
-        {children}
+        {children("Hola mundo")}
       </div>
     </Provider>
   );
