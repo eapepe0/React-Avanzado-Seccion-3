@@ -20,9 +20,9 @@ export interface Props {
 export const ProductContext = createContext ({} as ProductContextProps); 
 const { Provider } = ProductContext;
 
-export const ProductCard = ({ children,product, className,style , onChange , value , initialValues}: Props) => {
+export const ProductCard = ({ children,product, className,style , onChange , value , initialValues   }: Props) => {
 
-  const { counter, increaseBy } = useProduct({onChange , product , value}); 
+  const { counter, increaseBy } = useProduct({ onChange , product , value , initialValues }); 
 
   return (
     <Provider value={{counter , increaseBy, product }}>
