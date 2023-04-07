@@ -35,6 +35,7 @@ export const useProduct =  ( { onChange , product , value = 0, initialValues }:u
   return {
     counter,
     increaseBy,
+    maxCount : initialValues?.maxCount
   };
 };
 
