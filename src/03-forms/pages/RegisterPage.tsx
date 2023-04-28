@@ -1,26 +1,35 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import "../styles/styles.css";
 
 export const RegisterPage = () => {
   const [registerData, setRegisterData] = useState({
-    name: "Cristian",
-    email: "c@gmail.com",
-    password1: "123456",
-    password2: "123456",
+    name: "",
+    email: "",
+    password1: "",
+    password2: "",
   });
 
   const { name, email, password1, password2 } = registerData;
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.value);
+    setRegisterData((prev) => ({
+      ...prev, //* hacemos un spread a lo anterior , le agregamos el cambio
+      [event.target.name]: event.target.value, //* el name es igual al objeto name o email o password1 , le agregamos el valor ingresado
+    }));
   };
+
+  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log(registerData);
+  };
+
   return (
     <div>
       <h1>Register Page</h1>
-      <form action="">
+      <form noValidate onSubmit={onSubmit}>
         <input
           type="text"
-          name="Name"
+          name="name"
           id="name"
           placeholder="Name"
           value={name}
@@ -28,7 +37,7 @@ export const RegisterPage = () => {
         />
         <input
           type="email"
-          name="Email"
+          name="email"
           id="email"
           placeholder="Email"
           value={email}
