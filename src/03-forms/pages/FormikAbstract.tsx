@@ -3,6 +3,9 @@ import "../styles/styles.css";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { MyTextInput } from "../components/MyTextInput";
+import { MySelect } from "../components/MySelect";
+
+
 
 export const FormikAbstract = () => {
   return (
@@ -32,7 +35,7 @@ export const FormikAbstract = () => {
           terms: Yup.boolean().isTrue("Debe de aceptar Terminos y Condiciones"),
           jobType: Yup.string()
             .notOneOf(["IT Jr."], "Esta opcion no es permitida")
-            .required("Requerido"),
+            .required("Elige una opcion"),
         })}
       >
         {(formik) => (
@@ -44,14 +47,14 @@ export const FormikAbstract = () => {
             <MyTextInput label="Email" name="email" placeholder="Corre Electronico" type="email" /> 
            
 
-            <label htmlFor="jobType">Job Type</label>
-            <Field name="jobType" as="select">
+            <MySelect label="Job Type" name="jobType">
+              <option value="">Elige una opcion</option>
               <option value="Developer">Developer</option>
               <option value="Designer">Designer</option>
               <option value="IT Jr.">IT Jr.</option>
               <option value="IT Senior">IT Senior</option>
-            </Field>
-            <ErrorMessage name="jobType" component="span" />
+            </MySelect>
+            
 
             <label>
               Terminos y condiciones
