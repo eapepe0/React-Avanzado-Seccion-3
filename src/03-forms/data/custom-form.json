@@ -4,35 +4,60 @@
         "name":"fistName",
         "placeholder" : "Nombre",
         "label" : "First Name",
-        "value" : ""
+        "value" : "",
+        "validations" : [
+            {
+                "type" : "required"
+            }
+        ]
     },
     {
         "type":"input",
         "name":"lastName",
         "placeholder" : "Apellido",
         "label" : "Apellido",
-        "value" : ""
+        "value" : "",
+        "validations" : [
+            {
+                "type" : "required"
+            }
+        ]
     },
     {
         "type":"email",
         "name":"email",
         "placeholder" : "Correo Electronico",
         "label" : "Email",
-        "value" : ""
+        "value" : "",
+        "validations" : [
+            {
+                "type" : "required"
+            }
+        ]
     },
     {
         "type":"password",
         "name":"password1",
         "placeholder" : "Password",
         "label" : "Contraseña",
-        "value" : ""
+        "value" : "",
+        "validations" : [
+            {
+                "type" : "required"
+            }
+        ]
     },
     {
         "type":"password",
         "name":"password2",
         "placeholder" : "Repita el password",
         "label" : "Password",
-        "value" : ""
+        "value" : "",
+        "validations" : [
+            {
+                "type" : "required"
+            }
+        ]
     },
     {
         "type":"select",
@@ -50,7 +75,12 @@
         {
             "id":"3",
             "label":"opc3"
-        }]
+        }],
+        "validations" : [
+            {
+                "type" : "required"
+            }
+        ]
     }
 
 ]
