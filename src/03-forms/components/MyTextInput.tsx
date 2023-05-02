@@ -1,4 +1,4 @@
-import { useField } from "formik";
+import { ErrorMessage, useField } from "formik";
 
 interface Props {
   label: string; //* necesitamos un label
@@ -9,21 +9,15 @@ interface Props {
 }
 
 export const MyTextInput = ({ label, ...props }: Props) => { //* recibimos el label y las demas props les hacemos spread
-  const [field, meta] = useField(props);
+  const [field] = useField(props);
   //* field se encarga del name , value , onChange , onBlur ,
-  //* meta se encarga de los errores y si fue tocado (touched)
+  
 
   return (
     <>
       <label htmlFor={label}> {label}</label>
       <input className={props.className || ""} {...field} {...props} />{/* desestrucuramos lo que venga en field y en las props */}
-      {
-        /* si fue tocado y si hay un error mostramos el span con el mensaje de error */
-        meta.touched && meta.error &&
-        (
-            <span className="error">{meta.error}</span>
-        )
-      }
+      <ErrorMessage name={props.name} component="span"/>
     </>
   );
 };
