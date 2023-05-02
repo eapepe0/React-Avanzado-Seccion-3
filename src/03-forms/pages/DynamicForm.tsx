@@ -1,7 +1,7 @@
 import formJson from '../data/custom-form.json'
 
 import { Formik , Form } from 'formik'
-import { MyTextInput } from '../components'
+import { MySelect, MyTextInput } from '../components'
 
 
 const initialValues : {[key : string ] : any}= {};
@@ -25,14 +25,35 @@ export const DynamicForm = () => {
         >
             {(formik)=>(
                 <Form noValidate>
-                {formJson.map(({type, name , label , placeholder}) => {
-                    return <MyTextInput  key={name}
-                                        label={label} 
-                                        name={name} 
-                                        placeholder={placeholder}  
-                                        type={(type as any)} 
-                                        />
-                })}
+                {formJson.map(({type, name , label , placeholder , options}) => {
+                    if(type ==='input' || type === "password" || type === 'email'){
+                        return <MyTextInput  key={name}
+                                            label={label} 
+                                            name={name} 
+                                            placeholder={placeholder}  
+                                            type={(type as any)} 
+                                            />
+                    }else if(type === 'select'){
+                        return (
+                             <MySelect key={name} label={label} name={name}>
+                                <option value="" >Elija una opcion</option>
+                               {/*  {
+                                    options?.map((opt) => (
+                                        <option key={opt} value={opt}>{opt}</option>
+                                    ))
+                                } */}
+                                {
+                                    options?.map(({id , label}) => (
+                                        <option key={id} value={label}>{label}</option>
+                                    ))
+                                }
+                            </MySelect>
+                                
+                        )
+                    }
+                    return <span>Type : {type} no es soportado</span>                   
+                })
+            }
                 <button type="submit">Submit</button>
                 <button type="reset">Reset</button>
                 </Form>

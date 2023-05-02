@@ -33,6 +33,24 @@
         "placeholder" : "Repita el password",
         "label" : "Password",
         "value" : ""
+    },
+    {
+        "type":"select",
+        "name":"favoriteGame",
+        "label" : "Favorite Game",
+        "value" : "",
+        "options":[{
+            "id":"1",
+            "label":"opc1"
+        },
+        {
+            "id":"2",
+            "label":"opc2"
+        },
+        {
+            "id":"3",
+            "label":"opc3"
+        }]
     }
 
 ]
