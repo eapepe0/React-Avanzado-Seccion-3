@@ -8,6 +8,14 @@
         "validations" : [
             {
                 "type" : "required"
+            },
+            {
+                "type" : "minLength",
+                "value" : 5
+            },
+            {
+                "type" : "maxLength",
+                "value" : 15
             }
         ]
     },
@@ -20,6 +28,14 @@
         "validations" : [
             {
                 "type" : "required"
+            },
+            {
+                "type" : "minLength",
+                "value" : 3
+            },
+            {
+                "type" : "maxLength",
+                "value" : 10
             }
         ]
     },
@@ -32,6 +48,9 @@
         "validations" : [
             {
                 "type" : "required"
+            },
+            {
+                "type" : "email"
             }
         ]
     },
@@ -44,6 +63,14 @@
         "validations" : [
             {
                 "type" : "required"
+            },
+            {
+                "type" : "minLength",
+                "value" : 6
+            },
+            {
+                "type" : "maxLength",
+                "value" : 15
             }
         ]
     },
@@ -56,6 +83,10 @@
         "validations" : [
             {
                 "type" : "required"
+            },
+            {
+                "type" : "password",
+                "value" : "password1"
             }
         ]
     },
@@ -79,6 +110,20 @@
         "validations" : [
             {
                 "type" : "required"
+            }
+        ]
+    },
+    {
+        "type":"checkbox",
+        "name":"terms",
+        "label" : "Terminos y Condiciones",
+        "validations" : [
+            {
+                "type" : "required"
+            },
+            {
+                "type" : "boolean",
+                "mustBe" : true
             }
         ]
     }
