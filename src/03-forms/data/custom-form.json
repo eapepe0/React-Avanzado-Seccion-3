@@ -1,0 +1,38 @@
+[
+    {
+        "type":"input",
+        "name":"fistName",
+        "placeholder" : "Nombre",
+        "label" : "First Name",
+        "value" : ""
+    },
+    {
+        "type":"input",
+        "name":"lastName",
+        "placeholder" : "Apellido",
+        "label" : "Apellido",
+        "value" : ""
+    },
+    {
+        "type":"email",
+        "name":"email",
+        "placeholder" : "Correo Electronico",
+        "label" : "Email",
+        "value" : ""
+    },
+    {
+        "type":"password",
+        "name":"password1",
+        "placeholder" : "Password",
+        "label" : "Contraseña",
+        "value" : ""
+    },
+    {
+        "type":"password",
+        "name":"password2",
+        "placeholder" : "Repita el password",
+        "label" : "Password",
+        "value" : ""
+    }
+
+]
